@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+    <ui:composition template="/WEB-INF/templates/layout.xhtml">
+        <ui:define name="content">
+            <h:form id="form-register">
+
+	      <p>
+		<h:outputLabel for="first_name" value="#{msg.first_name}:"/>
+                <h:inputText id="first_name"/>
+	      </p>
+
+	      <p>
+		<h:outputLabel for="last_name" value="#{msg.last_name}:"/>
+                <h:inputText id="last_name"/>
+	      </p>
+
+	      <p>
+		<h:outputLabel for="email" value="#{msg.email}:"/>
+                <h:inputText id="email"/>
+	      </p>
+
+	      <p>
+		<h:outputLabel for="alias" value="#{msg.alias}:"/>
+                <h:inputText id="alias"/>
+	      </p>
+
+	      <p>
+		<h:outputLabel for="password" value="#{msg.password}:"/>
+                <h:inputSecret id="password"/>
+	      </p>
+
+	      <p>
+		<h:outputLabel for="phone" value="#{msg.phone}:"/>
+                <h:inputText id="phone"/>
+	      </p>
+
+	      <p>
+                <h:selectBooleanCheckbox id="subscribe"/>
+	      </p>
+
+	      <p>
+                <h:commandButton value="#{msg.register}"/>
+	      </p>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
