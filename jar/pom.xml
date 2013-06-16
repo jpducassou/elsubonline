@@ -3,6 +3,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <artifactId>elsubonline</artifactId>
+        <groupId>uy.com.elsubonline</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>uy.com.elsubonline</groupId>
     <artifactId>jar</artifactId>
     <packaging>jar</packaging>
