@@ -5,6 +5,7 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
+    <h:outputStylesheet library="css" name="normalize.min.css"/>
     <h:outputStylesheet library="css" name="elsubonline.css"/>
 
     <h:head>
@@ -12,9 +13,39 @@
     </h:head>
 
     <h:body>
-        <ui:include src="/WEB-INF/templates/header.xhtml"/>
-        <ui:insert name="content"/>
-        <ui:include src="/WEB-INF/templates/footer.xhtml"/>
+
+        <div class="header-container">
+            <header class="wrapper clearfix" id="header">
+                <h1 class="title">ElSubOnline - tu sitio de remate</h1>
+                <nav>
+                    <ul id="navbar">
+                        <li><h:link outcome="index.xhtml" value="#{msg.home}"/></li>
+                        <li><h:link outcome="registration.xhtml" value="#{msg.registration}"/></li>
+                        <li><h:link outcome="login.xhtml" value="#{msg.login}"/></li>
+                        <li><h:link outcome="help.xhtml" value="#{msg.help}"/></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <ui:insert name="content"/>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <footer class="wrapper" id="footer">
+                <p>El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de ElSubOnline.</p>
+                <p>Copyright © 2013 ElSubOnline</p>
+            </footer>
+        </div>
+
+        <!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        -->
+
     </h:body>
 
 </html>
