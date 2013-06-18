@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>ElSubOnline web application</name>
+    <name>elSubOnline web</name>
 
     <properties>
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>

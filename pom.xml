@@ -15,7 +15,7 @@
     <inceptionYear>2013</inceptionYear>
 
     <modules>
-        <module>jar</module>
+        <module>api</module>
         <module>ejb</module>
         <module>web</module>
         <module>ear</module>

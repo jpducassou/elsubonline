@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
-    <name>ejb package</name>
+    <name>elsubonline ejb</name>
 
     <dependencies>
         <dependency>
