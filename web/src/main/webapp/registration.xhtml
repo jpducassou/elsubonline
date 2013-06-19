@@ -3,6 +3,7 @@
 <html
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
@@ -22,7 +23,7 @@
 
 	      <p>
 		<h:outputLabel for="email" value="#{msg.email}:"/>
-                <h:inputText id="email"/>
+                <h:inputText id="email" value="#{registration.email}" required="true" />
 	      </p>
 
 	      <p>
@@ -41,11 +42,12 @@
 	      </p>
 
 	      <p>
-                <h:selectBooleanCheckbox id="subscribe"/>
+                <h:selectBooleanCheckbox id="subscribed"/>
+                <h:outputLabel for="subscribed" value="#{msg.subscribed}"/>
 	      </p>
 
 	      <p>
-                <h:commandButton value="#{msg.register}"/>
+                <h:commandButton value="#{msg.register}" action="#{registration.register}" />
 	      </p>
             </h:form>
         </ui:define>
