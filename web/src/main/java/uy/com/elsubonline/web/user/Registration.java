@@ -1,18 +1,26 @@
 package uy.com.elsubonline.web.user;
 
-import com.sun.istack.internal.logging.Logger;
+import java.io.Serializable;
+import javax.ejb.EJB;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import org.apache.log4j.Logger;
+import uy.com.elsubonline.api.IUser;
 
 /**
  *
  * @author jean
  */
 @ManagedBean
-@RequestScoped
-public class Registration {
+@ViewScoped
+public class Registration implements Serializable {
 
-    private final static Logger logger = Logger.getLogger(Registration.class);
+    private static final long   serialVersionUID = 1L;
+    private static final Logger logger = Logger.getLogger(Registration.class);
+
+    @EJB
+    private IUser user;
 
     private String first_name;
     private String last_name;
@@ -90,6 +98,7 @@ public class Registration {
      */
     public String register() {
         logger.info("Trying to register: " + email);
+	user.add(email, alias, first_name, last_name, password, phone, subscribed);
         return "home";
     }
 

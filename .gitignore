@@ -1,0 +1,7 @@
+# Eclipse project files
+/.project
+/.settings/
+/.classpath
+
+# Netbeans project files
+/nb-configuration.xml

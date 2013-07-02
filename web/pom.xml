@@ -66,6 +66,21 @@
             <artifactId>primefaces</artifactId>
             <version>3.5</version>
         </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>uy.com.elsubonline</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
