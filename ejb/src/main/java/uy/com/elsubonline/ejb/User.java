@@ -1,8 +1,8 @@
 package uy.com.elsubonline.ejb;
 
 import javax.ejb.Stateless;
-import uy.com.elsubonline.api.IUser;
 import org.apache.log4j.Logger;
+import uy.com.elsubonline.api.IUser;
 
 public @Stateless class User implements IUser {
 

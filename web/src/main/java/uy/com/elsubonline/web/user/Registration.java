@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUser;
 
@@ -13,7 +13,7 @@ import uy.com.elsubonline.api.IUser;
  * @author jean
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class Registration implements Serializable {
 
     private static final long   serialVersionUID = 1L;
