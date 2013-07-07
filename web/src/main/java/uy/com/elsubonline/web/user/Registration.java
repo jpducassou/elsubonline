@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.apache.log4j.Logger;
-import uy.com.elsubonline.api.IUser;
+import uy.com.elsubonline.api.IUserService;
 
 /**
  *
@@ -20,7 +20,7 @@ public class Registration implements Serializable {
     private static final Logger logger = Logger.getLogger(Registration.class);
 
     @EJB
-    private IUser user;
+    private IUserService user;
 
     private String first_name;
     private String last_name;
