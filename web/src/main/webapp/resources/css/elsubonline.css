@@ -6,6 +6,9 @@
         Main stylesheet.
 */
 
-root { display: block; }
+body { font-size: 16px; }
 h1 { font-size: 18px; }
+textarea { resize: vertical; }
 
+.header-container { background-color: #FFF059; border-bottom: 1px solid #D9D9D9; width: 100%; }
+#navbar .li { list-style: none outside none; }
