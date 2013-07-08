@@ -57,7 +57,7 @@
 
                <execution>
                   <id>deploy-mysql-driver</id>
-                  <phase>package</phase>
+                  <phase>deploy</phase>
                   <goals>
                      <goal>deploy-artifact</goal>
                   </goals>
@@ -70,7 +70,7 @@
 
 	       <execution>
                         <id>add-datasource</id>
-                        <phase>package</phase>
+                        <phase>deploy</phase>
                         <goals>
                             <goal>add-resource</goal>
                         </goals>
