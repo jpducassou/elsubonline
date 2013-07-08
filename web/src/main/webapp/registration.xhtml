@@ -13,32 +13,44 @@
 
 	      <p>
 		<h:outputLabel for="first_name" value="#{msg.first_name}:"/>
-                <h:inputText id="first_name"/>
+                <h:inputText id="first_name" required="true"/>
+		<h:message for="first_name" />
 	      </p>
 
 	      <p>
 		<h:outputLabel for="last_name" value="#{msg.last_name}:"/>
-                <h:inputText id="last_name"/>
+                <h:inputText id="last_name" required="true"/>
+		<h:message for="last_name" />
 	      </p>
 
 	      <p>
 		<h:outputLabel for="email" value="#{msg.email}:"/>
                 <h:inputText id="email" value="#{registration.email}" required="true" />
+		<h:message for="email" />
 	      </p>
 
 	      <p>
 		<h:outputLabel for="alias" value="#{msg.alias}:"/>
-                <h:inputText id="alias"/>
+                <h:inputText id="alias" required="true"/>
+		<h:message for="alias" />
 	      </p>
 
 	      <p>
 		<h:outputLabel for="password" value="#{msg.password}:"/>
-                <h:inputSecret id="password"/>
+                <h:inputSecret id="password" required="true"/>
+		<h:message for="password" />
+	      </p>
+
+	      <p>
+		<h:outputLabel for="password_repeat" value="#{msg.password_repeat}:"/>
+                <h:inputSecret id="password_repeat" required="true"/>
+		<h:message for="password_repeat" />
 	      </p>
 
 	      <p>
 		<h:outputLabel for="phone" value="#{msg.phone}:"/>
-                <h:inputText id="phone"/>
+                <h:inputText id="phone" required="true"/>
+		<h:message for="phone" />
 	      </p>
 
 	      <p>
