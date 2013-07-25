@@ -32,21 +32,20 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.1.1.Final</version>
                 <executions>
-
-               <execution>
-                  <id>deploy-mysql-driver</id>
-                  <phase>install</phase>
-                  <goals>
-                     <goal>deploy-artifact</goal>
-                  </goals>
-                  <configuration>
-                     <groupId>mysql</groupId>
-                     <artifactId>mysql-connector-java</artifactId>
-                     <name>mysql-connector-java-5.1.25-bin.jar</name>
-                  </configuration>
-               </execution>
-               <!-- mysql connection -->
-               <execution>
+                    <execution>
+                        <id>deploy-mysql-driver</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <name>mysql-connector-java-5.1.25-bin.jar</name>
+                        </configuration>
+                    </execution>
+                    <!-- mysql connection -->
+                    <execution>
                         <id>add-datasource</id>
                         <phase>install</phase>
                         <goals>
