@@ -15,7 +15,7 @@ public @Stateless class UserService implements IUserService {
 
 	@Override
 	public void add(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) {
-		logger.error("User.add called");
+		logger.info("User.add called");
 		User user = new User();
 		user.setEmail(email);
 		user.setNick_name(nick_name);

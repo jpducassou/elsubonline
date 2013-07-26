@@ -98,7 +98,7 @@ public class Registration implements Serializable {
      */
     public String register() {
         logger.info("Trying to register: " + email);
-	user.add(email, alias, first_name, last_name, password, phone, subscribed);
+        user.add(email, alias, first_name, last_name, password, phone, subscribed);
         return "home";
     }
 

@@ -8,10 +8,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author jean
- */
 @Entity
 @Table(name="users")
 public class User implements Serializable {
