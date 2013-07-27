@@ -16,10 +16,6 @@
 
     <name>elSubOnline web</name>
 
-    <properties>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
-    </properties>
-
     <repositories>
         <repository>
             <id>prime-repo</id>
