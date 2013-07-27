@@ -8,10 +8,6 @@ import javax.faces.bean.RequestScoped;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
 
-/**
- *
- * @author jean
- */
 @ManagedBean
 @RequestScoped
 public class Registration implements Serializable {
