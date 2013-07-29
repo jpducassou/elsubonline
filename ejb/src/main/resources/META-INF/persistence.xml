@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:/jboss/datasources/elsubonline</jta-data-source>
     <class>uy.com.elsubonline.domain.User</class>
+    <class>uy.com.elsubonline.domain.Category</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -21,10 +21,18 @@
 		</h:link>
                 <nav>
                     <ul id="navbar">
-                        <li><h:link outcome="index.xhtml" value="#{msg.home}"/></li>
-                        <li><h:link outcome="registration.xhtml" value="#{msg.registration}"/></li>
-                        <li><h:link outcome="login.xhtml" value="#{msg.login}"/></li>
-                        <li><h:link outcome="help.xhtml" value="#{msg.help}"/></li>
+                        <li><h:link outcome="/index.xhtml" value="#{msg.home}"/></li>
+                        <!-- without session -->
+                        <li><h:link outcome="/registration.xhtml" value="#{msg.registration}"/></li>
+                        <li><h:link outcome="/login.xhtml" value="#{msg.login}"/></li>
+                        <!-- with session -->
+                        <li>#{msg.admin}
+                            <ul>
+                                <h:link outcome="/admin/categories.xhtml" value="#{msg.categories}"/>
+                            </ul>
+                        </li>
+                        <!-- end -->
+                        <li><h:link outcome="/help.xhtml" value="#{msg.help}"/></li>
                     </ul>
                 </nav>
             </header>

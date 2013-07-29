@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:body>
+    <ui:composition template="/WEB-INF/templates/layout.xhtml">
+      <ui:define name="content">
+        <h:form id="form-categories">
+          <p>
+            <h:outputLabel for="name" value="#{msg.name}:"/>
+            <h:inputText id="name" value="#{category.category_name}" required="true" />
+          </p>
+          <p>
+            <h:commandButton value="#{msg.confirm}" action="#{category.create}"/>
+          </p>
+        </h:form>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

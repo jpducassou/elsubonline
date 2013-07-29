@@ -10,12 +10,12 @@ public @Stateless class UserService implements IUserService {
 
 	private final static Logger logger = Logger.getLogger(UserService.class);
 
-	@javax.persistence.PersistenceContext(unitName="uy.com.elsubonline.persistence" )
+	@javax.persistence.PersistenceContext(unitName="uy.com.elsubonline.persistence")
 	private javax.persistence.EntityManager em;
 
 	@Override
-	public void add(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) {
-		logger.info("User.add called");
+	public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) {
+		logger.info("UserService.create");
 		User user = new User();
 		user.setEmail(email);
 		user.setNick_name(nick_name);

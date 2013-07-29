@@ -2,7 +2,6 @@ package uy.com.elsubonline.web.user;
 
 import java.io.Serializable;
 import javax.ejb.EJB;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.apache.log4j.Logger;
@@ -94,7 +93,7 @@ public class Registration implements Serializable {
      */
     public String register() {
         logger.info("Trying to register: " + email);
-        user.add(email, alias, first_name, last_name, password, phone, subscribed);
+        user.create(email, alias, first_name, last_name, password, phone, subscribed);
         return "home";
     }
 
