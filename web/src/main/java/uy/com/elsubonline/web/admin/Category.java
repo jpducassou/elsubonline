@@ -6,6 +6,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.ICategoryService;
+import java.util.List;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
+import javax.faces.application.FacesMessage;
 
 @ManagedBean
 @RequestScoped
@@ -32,8 +36,24 @@ public class Category implements Serializable {
         this.category_name = category_name;
     }
 
+    public List<String> getList() {
+        return service.list();
+    }
+
+    public void onEdit(RowEditEvent event) {
+        String old_category_name = (String)event.getObject();
+        logger.info("Updating " + old_category_name + " to " + category_name);
+        service.update(old_category_name, category_name);
+        FacesMessage msg = new FacesMessage("Category edited", (String)event.getObject());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onCancel(RowEditEvent event) {
+    }
+
+
     public String create() {
-        logger.info("Trying to create category: ");
+        logger.info("Trying to create category: " + category_name);
         service.create(category_name);
         return "home";
     }
