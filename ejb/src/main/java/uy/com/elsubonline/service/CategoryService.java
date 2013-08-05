@@ -1,11 +1,11 @@
 package uy.com.elsubonline.service;
 
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.ICategoryService;
 import uy.com.elsubonline.domain.Category;
-import java.util.List;
-import javax.persistence.Query;
 
 public @Stateless class CategoryService implements ICategoryService {
 

@@ -1,7 +1,7 @@
 package uy.com.elsubonline.api;
 
-import javax.ejb.Local;
 import java.util.List;
+import javax.ejb.Local;
 
 @Local
 public interface ICategoryService {

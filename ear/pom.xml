@@ -68,6 +68,25 @@
                             </resource>
                         </configuration>
                     </execution>
+                    <!-- Registration queue -->
+                    <!--
+                    <execution>
+                        <id>add-registration-queue</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resource>
+                                <address>subsystem=messaging,hornetq-server=default,jms-queue=jms/elsubonline/registration</address>
+                                <properties>
+                                    <durable>true</durable>
+                                    <entries>!!["java:jboss/registration", "java:jboss/jms/elsubonline/registration"]</entries>
+                                </properties>
+                            </resource>
+                        </configuration>
+                    </execution>
+                    -->
                     <!-- Undeploy the application on clean -->
                     <execution>
                         <id>undeploy</id>
