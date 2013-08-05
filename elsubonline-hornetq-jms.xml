@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <messaging-deployment xmlns="urn:jboss:messaging-deployment:1.0">
     <hornetq-server>
-	<!--
-		<jms-connection-factories>
-			<pooled-connection-factory name="connectionFactory">
-				<transaction mode="xa"/>
-				<connectors>
-					<connector-ref connector-name="netty"/>
-				</connectors>
-				<entries>
-					<entry name="jms/elsubonline/ConnectionFactory"/>
-				</entries>
-			</pooled-connection-factory>
-		</jms-connection-factories>
-	-->
 		<jms-destinations>
             <jms-queue name="registration">
                 <entry name="queue/registration"/>
