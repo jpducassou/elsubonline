@@ -32,6 +32,7 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.1.1.Final</version>
                 <executions>
+                    <!--
                     <execution>
                         <id>deploy-mysql-driver</id>
                         <phase>install</phase>
@@ -44,6 +45,7 @@
                             <name>mysql-connector-java-5.1.25-bin.jar</name>
                         </configuration>
                     </execution>
+                    -->
                     <!-- mysql connection -->
                     <!--
                     <execution>
