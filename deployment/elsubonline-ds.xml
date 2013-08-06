@@ -7,3 +7,8 @@
 		<password>elsubonline</password>
 	</security>
 </datasource>
+
+<!-- driver mysql -->
+<driver name="mysql" module="com.mysql">
+	<xa-datasource-class>com.mysql.jdbc.Driver</xa-datasource-class>
+</driver>
