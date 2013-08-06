@@ -45,6 +45,7 @@
                         </configuration>
                     </execution>
                     <!-- mysql connection -->
+                    <!--
                     <execution>
                         <id>add-datasource</id>
                         <phase>install</phase>
@@ -68,6 +69,7 @@
                             </resource>
                         </configuration>
                     </execution>
+                    -->
                     <!-- Registration queue -->
                     <!--
                     <execution>
