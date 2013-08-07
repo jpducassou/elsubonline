@@ -5,7 +5,8 @@
             <jms-queue name="elsubonline/registration">
                 <entry name="queue/registration"/>
                 <entry name="jms/elsubonline/registration"/>
-            </jms-queue>	
+            </jms-queue>
         </jms-destinations>
     </hornetq-server>
 </messaging-deployment>
+
