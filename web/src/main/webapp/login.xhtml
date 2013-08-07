@@ -11,14 +11,14 @@
         <h:form id="form-login">
           <p>
             <h:outputLabel for="username" value="#{msg.username}:"/>
-            <h:inputText id="username"/>
+            <h:inputText id="username" value="#{login.username}"/>
           </p>
           <p>
             <h:outputLabel for="password" value="#{msg.password}:"/>
-            <h:inputSecret id="password"/>
+            <h:inputSecret id="password" value="#{login.password}"/>
           </p>
           <p>
-            <h:commandButton value="#{msg.login}"/>
+              <h:commandButton value="#{msg.login}" action="#{login.login}"/>
           </p>
         </h:form>
       </ui:define>

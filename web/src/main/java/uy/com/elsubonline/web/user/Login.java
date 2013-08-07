@@ -1,14 +1,14 @@
 package uy.com.elsubonline.web.user;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import org.apache.log4j.Logger;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class Login {
     
-    private static final Logger logger = Logger.getLogger(Registration.class);
+    private static final Logger logger = Logger.getLogger(Login.class);
 
     private String username;
     private String password;
@@ -41,8 +41,9 @@ public class Login {
         this.password = password;
     }
     
-    void login() {
+    public String login() {
         logger.info("Trying to login: " + username);
+        return null;
     }
 
 }
