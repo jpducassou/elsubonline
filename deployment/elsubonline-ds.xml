@@ -1,7 +1,7 @@
 <datasource jndi-name="java:jboss/datasources/elsubonline" pool-name="java:jboss/datasources/elsubonline" enabled="true">
 	<connection-url>jdbc:mysql://localhost:3306/elsubonline</connection-url>
 	<driver-class>com.mysql.jdbc.Driver</driver-class>
-	<driver>mysql-connector-java-5.1.25-bin.jar</driver>
+	<driver>mysql</driver>
 	<security>
 		<user-name>elsubonline</user-name>
 		<password>elsubonline</password>
