@@ -38,7 +38,7 @@ public @Stateless class UserService implements IUserService {
         user.setPassword(password);
         user.setPhone(phone);
         user.setSubscribed(subscribed);
-        user.setCreation_date(new Date());
+        user.setCreation_time(new Date());
         em.persist(user);
         logger.info("UserService.created user: " + email);
 
