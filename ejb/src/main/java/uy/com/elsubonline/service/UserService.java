@@ -1,7 +1,15 @@
 package uy.com.elsubonline.service;
 
 import java.util.Date;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
 import uy.com.elsubonline.domain.User;
@@ -12,13 +20,13 @@ public @Stateless class UserService implements IUserService {
 
     @javax.persistence.PersistenceContext(unitName="uy.com.elsubonline.persistence")
     private javax.persistence.EntityManager em;
-/*
-    @Resource(name = "jms/elsubonline/ConnectionFactory")
+
+    @Resource(name = "java:/ConnectionFactory")
     private static ConnectionFactory connectionFactory;
 
-    @Resource(name = "jms/elsubonline/registration")
+    @Resource(name = "java:/jms/elsubonline/registration")
     private static Queue registrationQueue;
-*/
+
     @Override
     public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) {
         logger.info("UserService.create " + email);
@@ -33,7 +41,7 @@ public @Stateless class UserService implements IUserService {
         user.setCreation_date(new Date());
         em.persist(user);
         logger.info("UserService.created user: " + email);
-/*
+
         // Create the needed artifacts to connect to the queue
         Connection connection;
         try {
@@ -82,6 +90,7 @@ public @Stateless class UserService implements IUserService {
         } catch (JMSException ex) {
             logger.error("Error trying to close", ex);
         }
-*/
+        logger.info("UserService.created sent to notification queue: " + email);
+
     }
 }
