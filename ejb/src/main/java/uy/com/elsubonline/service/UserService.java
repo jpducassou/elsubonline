@@ -96,4 +96,9 @@ public @Stateless class UserService implements IUserService {
         logger.info("UserService.created sent to notification queue: " + email);
 
     }
+
+    @Override
+    public boolean login_validate(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

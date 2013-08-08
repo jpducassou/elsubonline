@@ -43,6 +43,7 @@ public class Login {
     
     public String login() {
         logger.info("Trying to login: " + username);
+        
         return null;
     }
 
