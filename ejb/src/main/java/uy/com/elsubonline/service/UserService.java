@@ -10,6 +10,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
 import uy.com.elsubonline.domain.User;
@@ -35,10 +36,12 @@ public @Stateless class UserService implements IUserService {
         user.setNick_name(nick_name);
         user.setFirst_name(first_name);
         user.setLast_name(last_name);
-        user.setPassword(password);
         user.setPhone(phone);
         user.setSubscribed(subscribed);
+        user.setPassword("SHA1:" + DigestUtils.shaHex(password));
+        
         user.setCreation_time(new Date());
+
         em.persist(user);
         logger.info("UserService.created user: " + email);
 
