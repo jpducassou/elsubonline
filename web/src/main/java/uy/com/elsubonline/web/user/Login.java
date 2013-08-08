@@ -1,5 +1,6 @@
 package uy.com.elsubonline.web.user;
 
+import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -47,7 +48,9 @@ public class Login {
         logger.info("Trying to login: " + username);
         FacesMessage msg;
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+
+        msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("welcome"), username);
 /*
         if (true) {
         } else {
