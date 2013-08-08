@@ -1,7 +1,9 @@
 package uy.com.elsubonline.web.user;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 
 @ManagedBean
@@ -43,7 +45,20 @@ public class Login {
     
     public String login() {
         logger.info("Trying to login: " + username);
-        
+        FacesMessage msg;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+/*
+        if (true) {
+        } else {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Invalid credentials");
+        }
+        */
+        facesContext.addMessage(null, msg);
+        return null;
+    }
+
+    public String logout() {
         return null;
     }
 

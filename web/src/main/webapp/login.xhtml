@@ -3,12 +3,14 @@
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:ui="http://java.sun.com/jsf/facelets">
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
 
   <h:body>
     <ui:composition template="/WEB-INF/templates/layout.xhtml">
       <ui:define name="content">
         <h:form id="form-login">
+        <p:growl id="messages" showDetail="true" life="3000" />
           <p>
             <h:outputLabel for="username" value="#{msg.username}:"/>
             <h:inputText id="username" value="#{login.username}"/>
