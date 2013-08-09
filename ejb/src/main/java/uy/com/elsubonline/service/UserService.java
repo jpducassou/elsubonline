@@ -98,7 +98,7 @@ public @Stateless class UserService implements IUserService {
     }
 
     @Override
-    public boolean login_validate(String username, String password) {
+    public boolean validate_credentials(String username, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
