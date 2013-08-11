@@ -22,7 +22,7 @@ public class User implements Serializable {
     private String phone;
     private boolean subscribed;
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date creation_time;
     private UserStatus status;
 
