@@ -21,6 +21,7 @@ For more information visit [maven web site](http://maven.apache.org/).
 Notes:
 Jboss needs must be started with JMS support (i.e. -Djboss.server.default.config=standalone-full.xml)
 Also there is a directory called "deployments" with all you need to deploy this application:
+
 * mysql jdbc driver.
 * datasource configuration (elsubonline-ds.xml).
 * message queues configuration (elsubonline-hornetq-jms.xml).
