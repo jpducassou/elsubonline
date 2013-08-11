@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+@NamedQuery(name="validate_credentials",
+        query="select u.first_name from User u where u.email = :username and u.password = :password")
 
 @Entity
 @Table(name="users")

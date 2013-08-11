@@ -106,9 +106,14 @@ public @Stateless class UserService implements IUserService {
 
     }
 
+    
     @Override
     public boolean validate_credentials(String username, String password) {
-        // password = "SHA1:" + DigestUtils.shaHex(password);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        password = "SHA1:" + DigestUtils.shaHex(password);
+        String result = (String) em.createNamedQuery("validate_credentials")
+                .setParameter("username", username)
+                .setParameter("password", password).getSingleResult();
+        logger.info("Got user:" + result);
+        return false;
     }
 }
