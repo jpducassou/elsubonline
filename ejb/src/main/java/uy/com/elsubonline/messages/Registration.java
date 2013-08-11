@@ -3,8 +3,10 @@ package uy.com.elsubonline.messages;
 import java.util.Properties;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -21,9 +23,16 @@ public class Registration implements MessageListener {
     private final static Logger logger = Logger.getLogger(Registration.class);
 
     @Override
-    public void onMessage(Message message) {
-        logger.info("Message arrived: " + message);
-        // String notificationEmail = (TextMessage)message.get
+    public void onMessage(Message queueMessage) {
+        logger.info("Message arrived: " + queueMessage);
+        TextMessage notificationMessage = (TextMessage)queueMessage;
+        String notificationEmail;
+        try {
+            notificationEmail = notificationMessage.getText();
+        } catch (JMSException ex) {
+            logger.error("Error getting message text. Discarding.");
+            return;
+        }
 
         final String username = "from@gmail.com";
         final String password = "password";
@@ -48,14 +57,14 @@ public class Registration implements MessageListener {
             MimeMessage emailMessage = new MimeMessage(session);
             emailMessage.setFrom(new InternetAddress("from@gmail.com"));
             emailMessage.setRecipients(MimeMessage.RecipientType.TO,
-                    InternetAddress.parse("to@gmail.com"));
+                    InternetAddress.parse(notificationEmail));
             emailMessage.setSubject("Testing Subject");
             emailMessage.setText("Dear Mail Crawler,"
                     + "\n\n No spam to my email, please!");
 
             Transport.send(emailMessage);
 
-            logger.info("Email sent to: " + message);
+            logger.info("Email sent to: " + notificationEmail);
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
