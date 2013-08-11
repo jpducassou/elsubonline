@@ -1,11 +1,16 @@
 package uy.com.elsubonline.web.user;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
+import uy.com.elsubonline.api.exceptions.AddressAlreadyInUseException;
+import uy.com.elsubonline.api.exceptions.NotificationException;
 
 @ManagedBean
 @RequestScoped
@@ -93,7 +98,19 @@ public class Registration implements Serializable {
      */
     public String register() {
         logger.info("Trying to register: " + email);
-        user.create(email, alias, first_name, last_name, password, phone, subscribed);
+        FacesMessage msg;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+
+        try {
+            user.create(email, alias, first_name, last_name, password, phone, subscribed);
+        } catch (AddressAlreadyInUseException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("err_address_already_in_use"), email);
+            facesContext.addMessage(null, msg);
+        } catch (NotificationException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("err_notification_failed"), email);
+            facesContext.addMessage(null, msg);
+        }
         return "home";
     }
 

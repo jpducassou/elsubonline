@@ -13,6 +13,8 @@ import javax.jms.TextMessage;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
+import uy.com.elsubonline.api.exceptions.AddressAlreadyInUseException;
+import uy.com.elsubonline.api.exceptions.NotificationException;
 import uy.com.elsubonline.domain.User;
 
 public @Stateless class UserService implements IUserService {
@@ -29,7 +31,7 @@ public @Stateless class UserService implements IUserService {
     private static Queue registrationQueue;
 
     @Override
-    public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) {
+    public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) throws AddressAlreadyInUseException, NotificationException {
         logger.info("UserService.create " + email);
         User user = new User();
         user.setEmail(email);
@@ -41,8 +43,13 @@ public @Stateless class UserService implements IUserService {
         user.setPassword("SHA1:" + DigestUtils.shaHex(password));
         
         user.setCreation_time(new Date());
+        try {
+            em.persist(user);
+            em.flush();
+        } catch (Exception ex) {
+            throw(new AddressAlreadyInUseException(ex.getMessage()));
+        }
 
-        em.persist(user);
         logger.info("UserService.created user: " + email);
 
         // Create the needed artifacts to connect to the queue
@@ -51,21 +58,21 @@ public @Stateless class UserService implements IUserService {
             connection = connectionFactory.createConnection();
         } catch (JMSException ex) {
             logger.error("Error trying to createConnection", ex);
-            return;
+            throw(new NotificationException(email));
         }
         Session session;
         try {
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         } catch (JMSException ex) {
             logger.error("Error trying to createSession", ex);
-            return;
+            throw(new NotificationException(email));
         }
         MessageProducer producer;
         try {
             producer = session.createProducer(registrationQueue);
         } catch (JMSException ex) {
             logger.error("Error trying to createProducer", ex);
-            return;
+            throw(new NotificationException(email));
         }
 
         // Send text message to the queue
@@ -74,24 +81,24 @@ public @Stateless class UserService implements IUserService {
             message = session.createTextMessage();
         } catch (JMSException ex) {
             logger.error("Error trying to createTextMessage", ex);
-            return;
+            throw(new NotificationException(email));
         }
         try {
-            message.setText("Hola mundo");
+            message.setText(email);
         } catch (JMSException ex) {
             logger.error("Error trying to setText", ex);
-            return;
+            throw(new NotificationException(email));
         }
         try {
             producer.send(message);
         } catch (JMSException ex) {
             logger.error("Error trying to send", ex);
-            return;
+            throw(new NotificationException(email));
         }
         try {
             connection.close();
         } catch (JMSException ex) {
-            logger.error("Error trying to close", ex);
+            throw(new NotificationException(email));
         }
         logger.info("UserService.created sent to notification queue: " + email);
 

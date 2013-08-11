@@ -58,7 +58,7 @@ public class Login {
         if (user.validate_credentials(username, password)) {
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("welcome"), username);
         } else {
-            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("login_error"), username);
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_login"), username);
         }
 
         facesContext.addMessage(null, msg);
