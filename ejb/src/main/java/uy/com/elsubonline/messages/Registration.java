@@ -37,8 +37,8 @@ public class Registration implements MessageListener {
             return;
         }
 
-        final String username = "";
-        final String password = "";
+        final String username = config.getProperty("username");
+        final String password = config.getProperty("password");
 
         Session session = Session.getInstance(config,
             new javax.mail.Authenticator() {

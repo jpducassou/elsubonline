@@ -5,3 +5,4 @@
 
 # Netbeans project files
 /nb-configuration.xml
+/ejb/src/main/resources/email_config.properties
