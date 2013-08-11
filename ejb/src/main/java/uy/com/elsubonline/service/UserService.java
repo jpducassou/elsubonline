@@ -16,6 +16,7 @@ import uy.com.elsubonline.api.IUserService;
 import uy.com.elsubonline.api.exceptions.AddressAlreadyInUseException;
 import uy.com.elsubonline.api.exceptions.NotificationException;
 import uy.com.elsubonline.domain.User;
+import uy.com.elsubonline.domain.UserStatus;
 
 public @Stateless class UserService implements IUserService {
 
@@ -41,8 +42,9 @@ public @Stateless class UserService implements IUserService {
         user.setPhone(phone);
         user.setSubscribed(subscribed);
         user.setPassword("SHA1:" + DigestUtils.shaHex(password));
-        
+        user.setStatus(UserStatus.NEW_USER);
         user.setCreation_time(new Date());
+
         try {
             em.persist(user);
             em.flush();
@@ -106,6 +108,7 @@ public @Stateless class UserService implements IUserService {
 
     @Override
     public boolean validate_credentials(String username, String password) {
+        // password = "SHA1:" + DigestUtils.shaHex(password);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

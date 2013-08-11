@@ -24,6 +24,7 @@ public class User implements Serializable {
 
     @Temporal(TemporalType.TIME)
     private Date creation_time;
+    private UserStatus status;
 
     public String getEmail() {
       return email;
@@ -87,6 +88,14 @@ public class User implements Serializable {
 
     public void setCreation_time(Date creation_time) {
         this.creation_time = creation_time;
+    }
+
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
     }
 
 }
