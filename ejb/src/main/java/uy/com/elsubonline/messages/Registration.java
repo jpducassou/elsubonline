@@ -1,6 +1,8 @@
 package uy.com.elsubonline.messages;
 
+import java.io.IOException;
 import java.util.Properties;
+import javax.annotation.PostConstruct;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
@@ -21,6 +23,7 @@ import org.apache.log4j.Logger;
 public class Registration implements MessageListener {
 
     private final static Logger logger = Logger.getLogger(Registration.class);
+    private static Properties config;
 
     @Override
     public void onMessage(Message queueMessage) {
@@ -34,16 +37,10 @@ public class Registration implements MessageListener {
             return;
         }
 
-        final String username = "from@gmail.com";
-        final String password = "password";
+        final String username = "";
+        final String password = "";
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props,
+        Session session = Session.getInstance(config,
             new javax.mail.Authenticator() {
                   @Override
                   protected PasswordAuthentication getPasswordAuthentication() {
@@ -55,7 +52,7 @@ public class Registration implements MessageListener {
         try {
 
             MimeMessage emailMessage = new MimeMessage(session);
-            emailMessage.setFrom(new InternetAddress("from@gmail.com"));
+            emailMessage.setFrom(new InternetAddress(username));
             emailMessage.setRecipients(MimeMessage.RecipientType.TO,
                     InternetAddress.parse(notificationEmail));
             emailMessage.setSubject("Testing Subject");
@@ -71,4 +68,19 @@ public class Registration implements MessageListener {
         }
     }
 
+    @PostConstruct
+    private void init() {
+        config = new Properties();
+
+        try {
+            //load a properties file from class path, inside static method
+            config.load(Registration.class.getClassLoader().getResourceAsStream("email_config.properties"));
+
+            //get the property value and print it out3
+            logger.info("Mail through host: " + config.getProperty("mail.smtp.host"));
+ 
+    	} catch (IOException ex) {
+            logger.error("Error loading email config");
+        }
+    }
 }

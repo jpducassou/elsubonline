@@ -105,7 +105,6 @@ public @Stateless class UserService implements IUserService {
         logger.info("UserService.created sent to notification queue: " + email);
 
     }
-
     
     @Override
     public boolean validate_credentials(String username, String password) {
