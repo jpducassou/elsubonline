@@ -45,6 +45,7 @@ public @Stateless class UserService implements IUserService {
         user.setPassword("SHA1:" + DigestUtils.shaHex(password));
         user.setStatus(UserStatus.NEW_USER);
         user.setCreation_time(new Date());
+        user.setAdministrator(false);
 
         try {
             em.persist(user);

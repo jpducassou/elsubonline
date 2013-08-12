@@ -29,7 +29,7 @@ public class User implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation_time;
     private UserStatus status;
-    private boolean isAdmin;
+    private boolean administrator;
 
     public String getEmail() {
       return email;
@@ -103,12 +103,12 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public boolean isIsAdmin() {
-        return isAdmin;
+    public boolean isAdministrator() {
+        return administrator;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdministrator(boolean administrator) {
+        this.administrator = administrator;
     }
 
 }
