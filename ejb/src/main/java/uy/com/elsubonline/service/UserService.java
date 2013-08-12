@@ -10,6 +10,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.persistence.NoResultException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
@@ -109,10 +110,15 @@ public @Stateless class UserService implements IUserService {
     @Override
     public boolean validate_credentials(String username, String password) {
         password = "SHA1:" + DigestUtils.shaHex(password);
-        String result = (String) em.createNamedQuery("validate_credentials")
-                .setParameter("username", username)
-                .setParameter("password", password).getSingleResult();
-        logger.info("Got user:" + result);
-        return false;
+        
+        try {
+            String result = (String) em.createNamedQuery("validate_credentials")
+                    .setParameter("username", username)
+                    .setParameter("password", password).getSingleResult();
+            logger.info("Got user:" + result);
+        } catch (NoResultException ex) {
+            return false;
+        }
+        return true;
     }
 }
