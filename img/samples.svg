@@ -25,10 +25,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.15"
-     inkscape:cx="326.48797"
-     inkscape:cy="376.73883"
+     inkscape:cx="321.27492"
+     inkscape:cy="265.11092"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3068-9-1"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="705"
@@ -43,7 +43,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -283,13 +283,16 @@
        x="186.04684"
        y="743.58582"
        id="text2985-4-4-0-1"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\jee\workspace\elsubonline\img\text3100.png"
+       inkscape:export-xdpi="71.644203"
+       inkscape:export-ydpi="71.644203"><tspan
          sodipodi:role="line"
          x="186.04684"
          y="743.58582"
-         style="fill:#19003e;fill-opacity:1"
+         style="fill:#000000;fill-opacity:1"
          id="tspan4005-3-9-9-3">elsubonline<tspan
-   style="font-size:18px"
+   style="font-size:18px;fill:#000000;fill-opacity:1"
    id="tspan4007-9-4-5-0">  com  uy</tspan></tspan></text>
     <path
        sodipodi:type="arc"
@@ -300,7 +303,10 @@
        sodipodi:rx="5.5813951"
        sodipodi:ry="5.8139534"
        d="m 267.90699,330.73428 a 5.5813951,5.8139534 0 1 1 -11.16279,0 5.5813951,5.8139534 0 1 1 11.16279,0 z"
-       transform="matrix(0.66666665,0,0,0.66666665,164.89692,495.81822)" />
+       transform="matrix(0.66666665,0,0,0.66666665,159.17598,498.14381)"
+       inkscape:export-filename="C:\jee\workspace\elsubonline\img\text3100.png"
+       inkscape:export-xdpi="71.644203"
+       inkscape:export-ydpi="71.644203" />
     <g
        transform="matrix(0.06051721,-0.03953919,0.04372232,0.0722197,211.21239,355.71734)"
        style="fill:#ffa300;fill-opacity:1"
@@ -367,9 +373,11 @@
          d="m -934.92857,578.2197 -56.9808,0.19233 3.17519,97.18215 56.98065,-0.19226 -3.17504,-97.18222 z" />
     </g>
     <g
-       transform="matrix(0.06627901,-0.02530785,0.03275041,0.08577043,223.86548,431.23146)"
+       transform="matrix(0.05685241,-0.04244052,0.05492148,0.07357165,197.0907,425.066)"
        style="fill:#e4002b;fill-opacity:1"
-       id="g3068-2">
+       id="g3068-2"
+       inkscape:export-xdpi="92.131805"
+       inkscape:export-ydpi="92.131805">
       <path
          d="m -919.63207,756.21215 0.59284,-8.83801 48.59105,0.51017 0.40713,8.84852 -49.59102,-0.52068 z"
          id="path3029-7-1-3"
@@ -440,7 +448,10 @@
        sodipodi:rx="5.5813951"
        sodipodi:ry="5.8139534"
        d="m 267.90699,330.73428 a 5.5813951,5.8139534 0 1 1 -11.16279,0 5.5813951,5.8139534 0 1 1 11.16279,0 z"
-       transform="matrix(0.49999998,0,0,0.49999998,261.99326,577.09979)" />
+       transform="matrix(0.49999998,0,0,0.49999998,253.99326,577.09979)"
+       inkscape:export-filename="C:\jee\workspace\elsubonline\img\text3100.png"
+       inkscape:export-xdpi="71.644203"
+       inkscape:export-ydpi="71.644203" />
     <path
        sodipodi:type="arc"
        style="fill:#e4002b;fill-opacity:1;stroke:none"
@@ -450,18 +461,117 @@
        sodipodi:rx="5.5813951"
        sodipodi:ry="5.8139534"
        d="m 267.90699,330.73428 a 5.5813951,5.8139534 0 1 1 -11.16279,0 5.5813951,5.8139534 0 1 1 11.16279,0 z"
-       transform="matrix(0.49999998,0,0,0.49999998,306.04651,577.09979)" />
+       transform="matrix(0.49999998,0,0,0.49999998,296.04651,577.09979)"
+       inkscape:export-filename="C:\jee\workspace\elsubonline\img\text3100.png"
+       inkscape:export-xdpi="71.644203"
+       inkscape:export-ydpi="71.644203" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e4002b;fill-opacity:1;stroke:none;font-family:Sans"
        x="186.51163"
-       y="765.38544"
+       y="760.73425"
        id="text3100"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="71.644203"
+       inkscape:export-ydpi="71.644203"><tspan
          sodipodi:role="line"
          id="tspan3102"
          x="186.51163"
-         y="765.38544"
-         style="font-size:18px;-inkscape-font-specification:cabin;font-family:cabin">Tu mejor subasta</tspan></text>
+         y="760.73425"
+         style="font-size:18px;fill:#e4002b;fill-opacity:1;font-family:cabin;-inkscape-font-specification:cabin">Tu mejor subasta</tspan></text>
+    <g
+       transform="matrix(0.05342703,-0.06456353,0.08228494,0.06809171,352.22891,822.51271)"
+       style="fill:#e4002b;fill-opacity:1"
+       id="g3068-9-1">
+      <path
+         d="m -716.27256,81.531493 0.59284,-8.83801 48.59105,0.51017 0.40713,8.84852 -49.59102,-0.52068 z"
+         id="path3029-7-1-2-7"
+         style="fill:#e4002b;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -714.37607,52.706063 2.5975,-39.03738 c 4.42357,2.59346 9.55114,4.10051 15.05092,4.15824 l 11.8431,0.12435 c 5.49978,0.0577 10.65786,-1.34129 15.13491,-3.84131 l 1.77728,39.08332 -46.40371,-0.48722 z"
+         id="path3025-6-2-7-1"
+         style="fill:#e4002b;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <rect
+         width="138.49234"
+         height="42.582527"
+         rx="48.431866"
+         ry="27.861416"
+         x="-104.14738"
+         y="-589.05908"
+         transform="matrix(-0.00603901,0.99998177,0.99983344,0.01825096,0,0)"
+         id="rect2844-4-1-3-9-1"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -649.94954,-96.460957 56.9808,0.19233 -3.17519,97.18214976 -56.98065,-0.19226 3.17504,-97.18221976 z"
+         id="rect2848-0-8-3-5-5"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -722.37512,-84.323017 c 0.15572,-14.83341 12.16432,-26.592423 26.99782,-26.436693 l 11.84309,0.12435 c 14.83349,0.15574 26.59247,12.164323 26.43675,26.997733 l -0.75002,71.4336 c -0.15573,14.8334898 -12.16429,26.59251 -26.99779,26.43677 l -11.8431,-0.12435 c -14.83349,-0.15575 -26.5925,-12.1643102 -26.43677,-26.99781 l 0.75002,-71.4336 z"
+         id="rect2850-16-9-4-43-2"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -722.34743,85.655443 61.65285,0.64732 -0.12238,11.6556 -61.65285,-0.64731 0.12238,-11.65561 z"
+         id="rect2878-7-9-3-1-7"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -722.04461,56.813273 61.65285,0.64732 -0.12237,11.65562 -61.65285,-0.64733 0.12237,-11.65561 z"
+         id="rect2878-5-8-2-6"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         d="m -736.71703,391.64644 c 0.003,-0.7884 0.0357,-1.5933 0.0874,-2.3742 l 19.05338,-287.75334 51.7784,0.54365 13.00735,288.08989 c 1.17191,25.9569 -23.09645,53.8855 -42.50343,53.6818 -18.80054,-0.1974 -41.52491,-27.7462 -41.42313,-52.1878 z"
+         id="path3033-5-3-3-1"
+         style="fill:#e4002b;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <rect
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3064-3-4"
+         transform="matrix(0.00603901,0.99998177,-0.99983344,0.01825096,0,0)"
+         y="792.53735"
+         x="-129.36328"
+         ry="27.861416"
+         rx="48.431866"
+         height="42.582527"
+         width="138.49234"
+         inkscape:export-filename="C:\jee\workspace\elsubonline\img\path3066-4-2.png"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#e4002b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path3066-4-2"
+         d="m -731.56906,-96.460957 -56.9808,0.19233 3.17519,97.18214976 56.98065,-0.19226 -3.17504,-97.18221976 z"
+         inkscape:export-xdpi="81.690002"
+         inkscape:export-ydpi="81.690002" />
+    </g>
   </g>
 </svg>
