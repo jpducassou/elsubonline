@@ -8,6 +8,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
+import uy.com.elsubonline.api.exceptions.InvalidCredentialsException;
+import uy.com.elsubonline.api.exceptions.UserBannedException;
+import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 
 @ManagedBean
 @SessionScoped
@@ -55,10 +58,15 @@ public class Login {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
 
-        if (user.validate_credentials(username, password)) {
+        try {
+            user.validate_credentials(username, password);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("welcome"), username);
-        } else {
+        } catch (InvalidCredentialsException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_login"), username);
+        } catch (UserUnconfirmedException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_unconfirmed_user"), username);
+        } catch (UserBannedException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_banned_user"), username);
         }
 
         facesContext.addMessage(null, msg);

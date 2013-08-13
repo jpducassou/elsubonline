@@ -14,8 +14,12 @@ import javax.persistence.NoResultException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
-import uy.com.elsubonline.api.exceptions.AddressAlreadyInUseException;
+import uy.com.elsubonline.api.exceptions.AlreadyRegisteredException;
+import uy.com.elsubonline.api.exceptions.InvalidCredentialsException;
 import uy.com.elsubonline.api.exceptions.NotificationException;
+import uy.com.elsubonline.api.exceptions.ServiceException;
+import uy.com.elsubonline.api.exceptions.UserBannedException;
+import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 import uy.com.elsubonline.domain.User;
 import uy.com.elsubonline.domain.UserStatus;
 
@@ -33,7 +37,7 @@ public @Stateless class UserService implements IUserService {
     private static Queue registrationQueue;
 
     @Override
-    public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) throws AddressAlreadyInUseException, NotificationException {
+    public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) throws AlreadyRegisteredException, NotificationException {
         logger.info("UserService.create " + email);
         User user = new User();
         user.setEmail(email);
@@ -51,7 +55,7 @@ public @Stateless class UserService implements IUserService {
             em.persist(user);
             em.flush();
         } catch (Exception ex) {
-            throw(new AddressAlreadyInUseException(ex.getMessage()));
+            throw(new AlreadyRegisteredException(ex.getMessage()));
         }
 
         logger.info("UserService.created user: " + email);
@@ -109,7 +113,7 @@ public @Stateless class UserService implements IUserService {
     }
     
     @Override
-    public boolean validate_credentials(String username, String password) {
+    public void validate_credentials(String username, String password) throws InvalidCredentialsException, UserUnconfirmedException, UserBannedException {
         password = "SHA1:" + DigestUtils.shaHex(password);
         
         try {
@@ -118,8 +122,19 @@ public @Stateless class UserService implements IUserService {
                     .setParameter("password", password).getSingleResult();
             logger.info("Got user:" + result);
         } catch (NoResultException ex) {
-            return false;
+            throw(new InvalidCredentialsException());
         }
-        return true;
+        // Check if user is not confirmed
+        // Check if user is active
+
+    }
+
+    @Override
+    public void confirm(String username, String hashcode) throws ServiceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Find user info
+        // Validate user state
+        // Compare hashcode
+        // Change state
     }
 }

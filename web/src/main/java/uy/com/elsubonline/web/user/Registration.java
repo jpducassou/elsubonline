@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
-import uy.com.elsubonline.api.exceptions.AddressAlreadyInUseException;
+import uy.com.elsubonline.api.exceptions.AlreadyRegisteredException;
 import uy.com.elsubonline.api.exceptions.NotificationException;
 
 @ManagedBean
@@ -104,7 +104,7 @@ public class Registration implements Serializable {
 
         try {
             user.create(email, alias, first_name, last_name, password, phone, subscribed);
-        } catch (AddressAlreadyInUseException ex) {
+        } catch (AlreadyRegisteredException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("err_address_already_in_use"), email);
             facesContext.addMessage(null, msg);
         } catch (NotificationException ex) {

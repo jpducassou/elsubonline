@@ -4,6 +4,8 @@ import javax.ejb.ApplicationException;
 
 @ApplicationException(rollback = true)
 public class ServiceException extends Exception {
+    public ServiceException() {
+    }
     public ServiceException(String message) {
         super(message);
     }
