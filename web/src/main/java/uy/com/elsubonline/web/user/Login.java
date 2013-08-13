@@ -15,7 +15,7 @@ import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 @ManagedBean
 @SessionScoped
 public class Login {
-    
+
     private static final Logger logger = Logger.getLogger(Login.class);
 
     @EJB
@@ -51,7 +51,7 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String login() {
         logger.info("Trying to login: " + username);
         FacesMessage msg;

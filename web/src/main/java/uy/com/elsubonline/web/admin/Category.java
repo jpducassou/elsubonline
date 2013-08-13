@@ -1,15 +1,15 @@
 package uy.com.elsubonline.web.admin;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import org.apache.log4j.Logger;
-import uy.com.elsubonline.api.ICategoryService;
-import java.util.List;
 import javax.faces.context.FacesContext;
+import org.apache.log4j.Logger;
 import org.primefaces.event.RowEditEvent;
-import javax.faces.application.FacesMessage;
+import uy.com.elsubonline.api.ICategoryService;
 
 @ManagedBean
 @RequestScoped
