@@ -37,8 +37,8 @@ public class Registration implements MessageListener {
             return;
         }
 
-        final String username = config.getProperty("username");
-        final String password = config.getProperty("password");
+        final String username = config.getProperty("mail.username");
+        final String password = config.getProperty("mail.password");
 
         Session session = Session.getInstance(config,
             new javax.mail.Authenticator() {
@@ -48,16 +48,24 @@ public class Registration implements MessageListener {
                   }
             }
         );
- 
+
+        /* TODO:
+            Get the user
+            Ask the user for the code.
+        String confirmation_code = DigestUtils.shaHex(config.getProperty("mail.password") + notificationEmail);
+        String confirmation_url  = ;
+                */
+
         try {
 
             MimeMessage emailMessage = new MimeMessage(session);
             emailMessage.setFrom(new InternetAddress(username));
             emailMessage.setRecipients(MimeMessage.RecipientType.TO,
                     InternetAddress.parse(notificationEmail));
-            emailMessage.setSubject("Testing Subject");
-            emailMessage.setText("Dear Mail Crawler,"
-                    + "\n\n No spam to my email, please!");
+
+            emailMessage.setSubject(config.getProperty("mail.subject"));
+
+            emailMessage.setText("Dear Mail Crawler, \n\n No spam to my email, please!");
 
             Transport.send(emailMessage);
 

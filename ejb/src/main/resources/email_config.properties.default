@@ -4,3 +4,4 @@ mail.smtp.host=smtp.gmail.com
 mail.smtp.port=587
 mail.username=
 mail.password=
+mail.subject=ElsubOnline - confirmación de usuario
