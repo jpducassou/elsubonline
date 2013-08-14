@@ -1,6 +1,5 @@
 package uy.com.elsubonline.service;
 
-import java.util.Date;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -22,7 +21,6 @@ import uy.com.elsubonline.api.exceptions.ServiceException;
 import uy.com.elsubonline.api.exceptions.UserBannedException;
 import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 import uy.com.elsubonline.domain.User;
-import uy.com.elsubonline.domain.UserStatus;
 
 public @Stateless class UserService implements IUserService {
 
@@ -40,17 +38,7 @@ public @Stateless class UserService implements IUserService {
     @Override
     public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) throws AlreadyRegisteredException, NotificationException {
         logger.info("UserService.create " + email);
-        User user = new User();
-        user.setEmail(email);
-        user.setNick_name(nick_name);
-        user.setFirst_name(first_name);
-        user.setLast_name(last_name);
-        user.setPhone(phone);
-        user.setSubscribed(subscribed);
-        user.setPassword("SHA1:" + DigestUtils.shaHex(password));
-        user.setStatus(UserStatus.NEW);
-        user.setCreation_time(new Date());
-        user.setAdministrator(false);
+        User user = new User(email, nick_name, first_name, last_name, password, phone, subscribed);
 
         try {
             em.persist(user);
