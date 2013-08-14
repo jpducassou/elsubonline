@@ -6,8 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import uy.com.elsubonline.api.dtos.UserDto;
 import uy.com.elsubonline.web.user.Login;
 
 public class AccessControlPhaseListener implements PhaseListener {
@@ -30,18 +30,22 @@ public class AccessControlPhaseListener implements PhaseListener {
         String viewId = context.getViewRoot().getViewId();
         logger.info("Processing: " + viewId);
 
-        // Check url + accesslevel
-        // sessionBean.isAdmin()?
-        if (viewId.startsWith("/admin/")) {
-            redirectAdmin(context);
+        if (viewId.startsWith("/user/")) {
+            UserDto activeUser = sessionBean.getActiveUser();
+            if (activeUser == null) {
+                addError(context, "access.loginrequired");
+                context.getApplication().getNavigationHandler().handleNavigation(context, null, "home");
+            }
         }
 
-    }
+        if (viewId.startsWith("/admin/")) {
+            UserDto activeUser = sessionBean.getActiveUser();
+            if (activeUser == null || !activeUser.isAdministrator()) {
+                addError(context, "access.adminrequired");
+                context.getApplication().getNavigationHandler().handleNavigation(context, null, "home");
+            }
+        }
 
-
-    private void redirectAdmin(FacesContext context) {
-        addError(context, "access.adminrequired");
-        context.getApplication().getNavigationHandler().handleNavigation(context, null, "home");
     }
 
     private void addError(FacesContext context, String key) {

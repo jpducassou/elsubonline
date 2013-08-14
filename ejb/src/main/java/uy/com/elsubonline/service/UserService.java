@@ -14,6 +14,7 @@ import javax.persistence.NoResultException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
+import uy.com.elsubonline.api.dtos.UserDto;
 import uy.com.elsubonline.api.exceptions.AlreadyRegisteredException;
 import uy.com.elsubonline.api.exceptions.InvalidCredentialsException;
 import uy.com.elsubonline.api.exceptions.NotificationException;
@@ -47,7 +48,7 @@ public @Stateless class UserService implements IUserService {
         user.setPhone(phone);
         user.setSubscribed(subscribed);
         user.setPassword("SHA1:" + DigestUtils.shaHex(password));
-        user.setStatus(UserStatus.NEW_USER);
+        user.setStatus(UserStatus.NEW);
         user.setCreation_time(new Date());
         user.setAdministrator(false);
 
@@ -113,19 +114,18 @@ public @Stateless class UserService implements IUserService {
     }
     
     @Override
-    public void validate_credentials(String username, String password) throws InvalidCredentialsException, UserUnconfirmedException, UserBannedException {
+    public UserDto validate_credentials(String username, String password) throws InvalidCredentialsException, UserUnconfirmedException, UserBannedException {
         password = "SHA1:" + DigestUtils.shaHex(password);
         
         try {
-            String result = (String) em.createNamedQuery("validate_credentials")
+            UserDto userDto = (UserDto)em.createNamedQuery("validate_credentials")
                     .setParameter("username", username)
                     .setParameter("password", password).getSingleResult();
-            logger.info("Got user:" + result);
+            logger.info("Got user:" + userDto.getEmail());
+            return userDto;
         } catch (NoResultException ex) {
             throw(new InvalidCredentialsException());
         }
-        // Check if user is not confirmed
-        // Check if user is active
 
     }
 

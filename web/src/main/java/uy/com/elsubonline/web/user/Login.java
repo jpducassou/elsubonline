@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
+import uy.com.elsubonline.api.dtos.UserDto;
 import uy.com.elsubonline.api.exceptions.InvalidCredentialsException;
 import uy.com.elsubonline.api.exceptions.UserBannedException;
 import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
@@ -23,6 +24,8 @@ public class Login {
 
     private String username;
     private String password;
+
+    private UserDto activeUser = null;
 
     /**
      * @return the username
@@ -59,7 +62,7 @@ public class Login {
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
 
         try {
-            user.validate_credentials(username, password);
+            setActiveUser(user.validate_credentials(username, password));
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("welcome"), username);
         } catch (InvalidCredentialsException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_login"), username);
@@ -75,6 +78,14 @@ public class Login {
 
     public String logout() {
         return null;
+    }
+
+    public UserDto getActiveUser() {
+        return activeUser;
+    }
+
+    public void setActiveUser(UserDto activeUser) {
+        this.activeUser = activeUser;
     }
 
 }

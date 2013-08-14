@@ -3,6 +3,8 @@ package uy.com.elsubonline.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -10,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @NamedQuery(name="validate_credentials",
-        query="select u.first_name from User u where u.email = :username and u.password = :password")
+        query="select new uy.com.elsubonline.api.dtos.UserDto(u.email, u.first_name, u.last_name, u.nick_name, u.administrator) from User u where u.email = :username and u.password = :password and u.status = uy.com.elsubonline.domain.UserStatus.ACTIVE")
 
 @Entity
 @Table(name="users")
@@ -28,7 +30,10 @@ public class User implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation_time;
+
+    @Enumerated(EnumType.STRING)
     private UserStatus status;
+
     private boolean administrator;
 
     public String getEmail() {
