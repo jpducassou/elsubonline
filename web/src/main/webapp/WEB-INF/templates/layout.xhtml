@@ -36,6 +36,7 @@
                         </c:choose>
                         <!-- with session -->
                         <c:otherwise>
+                            <li><h:link outcome="/user/auction.xhtml" value="#{msg.new_auction}"/></li>
                             <c:choose>
                                 <c:when test="#{login.activeUser.administrator}">
                                     <li>#{msg.admin}

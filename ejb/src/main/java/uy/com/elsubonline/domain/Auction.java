@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="auctions")
 public class Auction implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -20,10 +21,15 @@ public class Auction implements Serializable {
     private Long id;
 
     private String title;
-    private String description;
-    private float base_price;
-    @Temporal(TemporalType.TIME)
+    private String short_description;
+    private String long_description;
+    private double base_price;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date creation_time;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date closing_time;
 
     public Long getId() {
         return id;
@@ -33,9 +39,57 @@ public class Auction implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "uy.com.elsubonline.domain.Auction[ id=" + id + " ]";
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getShort_description() {
+        return short_description;
+    }
+
+    public void setShort_description(String short_description) {
+        this.short_description = short_description;
+    }
+
+    public String getLong_description() {
+        return long_description;
+    }
+
+    public void setLong_description(String long_description) {
+        this.long_description = long_description;
+    }
+
+    public double getBase_price() {
+        return base_price;
+    }
+
+    public void setBase_price(double base_price) {
+        this.base_price = base_price;
+    }
+
+    public Date getCreation_time() {
+        return creation_time;
+    }
+
+    public void setCreation_time(Date creation_time) {
+        this.creation_time = creation_time;
+    }
+
+    public Date getClosing_time() {
+        return closing_time;
+    }
+
+    public void setClosing_time(Date closing_time) {
+        this.closing_time = closing_time;
     }
     
+    @Override
+    public String toString() {
+        return "uy.com.elsubonline.domain.Auction[ id=" + getId() + " ]";
+    }
+
 }
