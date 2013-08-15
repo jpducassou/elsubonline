@@ -108,7 +108,7 @@ public class Registration implements Serializable {
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("err_notification_failed"), email);
             facesContext.addMessage(null, msg);
         }
-        return "home";
+        return "/index.xhtml";
     }
 
 }

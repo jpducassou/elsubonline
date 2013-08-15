@@ -4,7 +4,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:c="http://java.sun.com/jsp/jstl/core">
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
 
     <h:outputStylesheet library="css" name="normalize.min.css"/>
     <h:outputStylesheet library="css" name="elsubonline.css"/>
@@ -15,7 +16,7 @@
     </h:head>
 
     <h:body>
-
+        <p:growl id="layout_messages" showDetail="true" life="3000" />
         <div id="header-container">
 
             <header class="wrapper clearfix" id="header">
@@ -35,7 +36,6 @@
                         </c:choose>
                         <!-- with session -->
                         <c:otherwise>
-                            <h:outputText value="#{login.activeUser.first_name}"/>
                             <c:choose>
                                 <c:when test="#{login.activeUser.administrator}">
                                     <li>#{msg.admin}
@@ -55,7 +55,15 @@
 
         <div id="main-container" class="clearfix">
             <div class="main wrapper clearfix">
-		<div id="categories">
+
+                <!-- user logged in -->
+                <c:choose>
+                    <c:when test="#{not empty login.activeUser}">
+                        <p><h:outputText value="#{login.activeUser.first_name} #{login.activeUser.last_name}"/></p>
+                    </c:when>
+                </c:choose>
+
+                <div id="categories">
 		  <ul>
 		    <li>Animales y Mascotas</li>
 		    <li>Arte y Antigüedades</li>

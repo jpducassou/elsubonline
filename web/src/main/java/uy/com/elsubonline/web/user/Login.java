@@ -61,7 +61,7 @@ public class Login {
         }
 
         facesContext.addMessage(null, msg);
-        return null;
+        return "/index.xhtml";
     }
 
     public String logout() {
