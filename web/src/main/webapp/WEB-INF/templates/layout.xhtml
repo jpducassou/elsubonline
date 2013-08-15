@@ -67,13 +67,11 @@
                 </c:choose>
 
                 <div id="categories">
-		  <ul>
-		    <li>Animales y Mascotas</li>
-		    <li>Arte y Antigüedades</li>
-		    <li>Computación</li>
-		    <li>Deportes y Fitness</li>
-		    <li>Industrias y Oficinas</li>
-		  </ul>
+                    <ul>
+                        <ui:repeat value="#{category.list}" var="category">
+                            <li>#{category}</li>
+                        </ui:repeat>
+                    </ul>
 		</div>
                 <ui:insert name="content"/>
             </div>
