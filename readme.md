@@ -19,6 +19,7 @@ Third party software bundled are covered by their respective licenses (i.e. mysq
 Compilation
 -----------------------------
 This is a maven project so executing `mvn package` should do.
+The application artifact is saved into "ear\target\ear-1.0-SNAPSHOT.ear".
 
 Execution
 -----------------------------
