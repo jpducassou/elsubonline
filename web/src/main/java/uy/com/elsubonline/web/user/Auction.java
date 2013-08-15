@@ -35,7 +35,7 @@ public class Auction {
             auctionService.create(title, short_description, long_description, base_price);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_auction_created"), title);
         } catch (ServiceException ex) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("err_auction_aborted"), title);
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_auction_aborted"), title);
         }
 
         facesContext.addMessage(null, msg);
