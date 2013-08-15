@@ -27,30 +27,18 @@ public class Login {
 
     private UserDto activeUser = null;
 
-    /**
-     * @return the username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the username to set
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }
@@ -63,7 +51,7 @@ public class Login {
 
         try {
             setActiveUser(user.validate_credentials(username, password));
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("welcome"), username);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_welcome"), username);
         } catch (InvalidCredentialsException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_login"), username);
         } catch (UserUnconfirmedException ex) {

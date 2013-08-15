@@ -58,6 +58,11 @@ public class User implements Serializable {
         this.administrator = false;
 
     }
+    
+    public String getHashCode() {
+        String confirmation_code = DigestUtils.shaHex(this.email + this.password);
+        return confirmation_code;
+    }
 
     public String getEmail() {
       return email;

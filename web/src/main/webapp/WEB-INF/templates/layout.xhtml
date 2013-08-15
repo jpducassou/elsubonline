@@ -29,6 +29,7 @@
                         <c:choose>
                             <c:when test="#{empty login.activeUser}">
                                 <li><h:link outcome="/registration.xhtml" value="#{msg.registration}"/></li>
+                                <li><h:link outcome="/confirmation.xhtml" value="#{msg.confirmation}"/></li>
                                 <li><h:link outcome="/login.xhtml" value="#{msg.login}"/></li>
                             </c:when>
                         </c:choose>

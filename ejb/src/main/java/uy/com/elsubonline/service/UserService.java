@@ -21,6 +21,7 @@ import uy.com.elsubonline.api.exceptions.ServiceException;
 import uy.com.elsubonline.api.exceptions.UserBannedException;
 import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 import uy.com.elsubonline.domain.User;
+import uy.com.elsubonline.domain.UserStatus;
 import uy.com.elsubonline.persistence.IUserDAO;
 import uy.com.elsubonline.persistence.PersistenceException;
 
@@ -120,11 +121,36 @@ public @Stateless class UserService implements IUserService {
     }
 
     @Override
-    public void confirm(String username, String hashcode) throws ServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void confirm(String username, String confirmation_code) throws ServiceException {
+
+        User user;
+
         // Find user info
+        try {
+            user = userDAO.retrieve(username);
+        } catch (PersistenceException ex) {
+            logger.error("User " + username + " not found for confirmation!");
+            throw(new ServiceException());
+        }
+
         // Validate user state
-        // Compare hashcode
+        if (user.getStatus() != UserStatus.NEW) {
+            logger.error("User " + username + " is not a fresh one!");
+            throw(new ServiceException("Invalid user state!"));
+        }
+
+        // Validate confirmation_code
+        if (!user.getHashCode().equals(confirmation_code)) {
+            logger.error("User " + username + " has invalid confirmation code!");
+            throw(new ServiceException("Invalid confirmation code!"));
+        }
+
         // Change state
+        user.setStatus(UserStatus.ACTIVE);
+        try {
+            userDAO.update(user);
+        } catch (PersistenceException ex) {
+            logger.error("Cannot update status of user " + username);
+        }
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+
+  <h:body>
+    <ui:composition template="/WEB-INF/templates/layout.xhtml">
+      <ui:define name="content">
+        <h:form id="form-confirm">
+        <p:growl id="messages" showDetail="true" life="3000" />
+          <p>
+            <h:outputLabel for="username" value="#{msg.username}:"/>
+            <h:inputText id="username" value="#{confirmation.username}"/>
+          </p>
+          <p>
+            <h:outputLabel for="confirmation_code" value="#{msg.confirmation_code}:"/>
+            <h:inputSecret id="confirmation_code" value="#{confirmation.confirmation_code}"/>
+          </p>
+          <p>
+              <h:commandButton value="#{msg.confirm}" action="#{confirmation.confirm}"/>
+          </p>
+        </h:form>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

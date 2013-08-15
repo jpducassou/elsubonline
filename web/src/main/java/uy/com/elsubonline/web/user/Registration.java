@@ -30,9 +30,6 @@ public class Registration implements Serializable {
     private String phone;
     private boolean subscribed;
 
-    /**
-     * Creates a new instance of Registration
-     */
     public Registration() {
     }
 

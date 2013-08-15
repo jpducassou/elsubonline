@@ -13,5 +13,5 @@ import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 public interface IUserService {
 	public void create(String email, String alias, String first_name, String last_name, String password, String phone, boolean subscribed) throws AlreadyRegisteredException, NotificationException;
         public UserDto validate_credentials(String username, String password) throws InvalidCredentialsException, UserUnconfirmedException, UserBannedException;
-        public void confirm(String username, String hashcode) throws ServiceException;
+        public void confirm(String username, String confirmation_code) throws ServiceException;
 }

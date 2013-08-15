@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -16,6 +17,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
+import uy.com.elsubonline.domain.User;
+import uy.com.elsubonline.persistence.IUserDAO;
+import uy.com.elsubonline.persistence.PersistenceException;
 
 @MessageDriven(
     activationConfig={@ActivationConfigProperty(propertyName="destination", propertyValue="java:/jms/elsubonline/registration")}
@@ -24,10 +28,14 @@ public class Registration implements MessageListener {
 
     private final static Logger logger = Logger.getLogger(Registration.class);
     private static Properties config;
+    @EJB
+    private IUserDAO userDAO;
 
     @Override
     public void onMessage(Message queueMessage) {
+
         logger.info("Message arrived: " + queueMessage);
+
         TextMessage notificationMessage = (TextMessage)queueMessage;
         String notificationEmail;
         try {
@@ -49,12 +57,17 @@ public class Registration implements MessageListener {
             }
         );
 
-        /* TODO:
-            Get the user
-            Ask the user for the code.
-        String confirmation_code = DigestUtils.shaHex(config.getProperty("mail.password") + notificationEmail);
-        String confirmation_url  = ;
-                */
+        // Get the user
+        User user;
+        try {
+            user = userDAO.retrieve(notificationEmail);
+        } catch (PersistenceException ex) {
+            logger.error("User not found " + notificationEmail);
+            return;
+        }
+
+        // Get the confirmation code.
+        String confirmation_code = user.getHashCode();
 
         try {
 
@@ -65,7 +78,8 @@ public class Registration implements MessageListener {
 
             emailMessage.setSubject(config.getProperty("mail.subject"));
 
-            emailMessage.setText("Dear Mail Crawler, \n\n No spam to my email, please!");
+            emailMessage.setText("Dear " + user.getFirst_name() + " " + user.getLast_name() + ": "
+                    + "\n\n Your activation code is: " + confirmation_code);
 
             Transport.send(emailMessage);
 
