@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="/WEB-INF/templates/layout.xhtml">
+        <ui:define name="content">
+            <h:form id="form-aution">
+              <p:growl id="messages" showDetail="true" life="3000" />
+              <p>
+                <h:outputLabel for="title" value="#{msg.title}:"/>
+                <h:inputText id="titile" value="#{auction.title}" required="true"/>
+                <h:message for="title" />
+              </p>
+
+              <p>
+                <h:outputLabel for="short_description" value="#{msg.short_description}:"/>
+                <h:inputTextarea id="short_description" value="#{auction.short_description}" required="true"/>
+                <h:message for="short_description" />
+              </p>
+
+              <p>
+                <h:outputLabel for="long_description" value="#{msg.long_description}:"/>
+                <h:inputText id="long_description" value="#{auction.long_description}" required="true" />
+                <h:message for="long_description" />
+              </p>
+
+              <p>
+                <h:outputLabel for="base_price" value="#{msg.base_price}:"/>
+                <h:inputText id="base_price" value="#{auction.base_price}" required="true" size="4"/>
+                <h:message for="base_price" />
+              </p>
+
+              <p>
+                <h:commandButton value="#{msg.create}" action="#{auction.create}" />
+              </p>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

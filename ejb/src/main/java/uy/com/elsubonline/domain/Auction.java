@@ -31,6 +31,24 @@ public class Auction implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date closing_time;
 
+    public Auction() {
+        // Empty constructor
+    }
+
+    public Auction(String title, String short_description, String long_description, double base_price) {
+
+        // Basic attibutes
+        this.title = title;
+        this.short_description = short_description;
+        this.long_description  = long_description;
+        this.base_price = base_price;
+
+        // Calculated attributes
+        this.creation_time = new Date();
+        this.closing_time  = new Date();
+
+    }
+
     public Long getId() {
         return id;
     }
