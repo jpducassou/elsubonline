@@ -1,6 +1,7 @@
 package uy.com.elsubonline.service;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -9,7 +10,6 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.persistence.NoResultException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
@@ -21,13 +21,15 @@ import uy.com.elsubonline.api.exceptions.ServiceException;
 import uy.com.elsubonline.api.exceptions.UserBannedException;
 import uy.com.elsubonline.api.exceptions.UserUnconfirmedException;
 import uy.com.elsubonline.domain.User;
+import uy.com.elsubonline.persistence.IUserDAO;
+import uy.com.elsubonline.persistence.PersistenceException;
 
 public @Stateless class UserService implements IUserService {
 
     private final static Logger logger = Logger.getLogger(UserService.class);
 
-    @javax.persistence.PersistenceContext(unitName="uy.com.elsubonline.persistence")
-    private javax.persistence.EntityManager em;
+    @EJB
+    private IUserDAO userDAO;
 
     @Resource(name = "java:/ConnectionFactory")
     private static ConnectionFactory connectionFactory;
@@ -37,13 +39,14 @@ public @Stateless class UserService implements IUserService {
 
     @Override
     public void create(String email, String nick_name, String first_name, String last_name, String password, String phone, boolean subscribed) throws AlreadyRegisteredException, NotificationException {
-        logger.info("UserService.create " + email);
-        User user = new User(email, nick_name, first_name, last_name, password, phone, subscribed);
 
+        logger.info("UserService.create " + email);
+
+        User user = new User(email, nick_name, first_name, last_name, password, phone, subscribed);
+        
         try {
-            em.persist(user);
-            em.flush();
-        } catch (Exception ex) {
+            userDAO.create(user);
+        } catch (PersistenceException ex) {
             throw(new AlreadyRegisteredException(ex.getMessage()));
         }
 
@@ -103,15 +106,14 @@ public @Stateless class UserService implements IUserService {
     
     @Override
     public UserDto validate_credentials(String username, String password) throws InvalidCredentialsException, UserUnconfirmedException, UserBannedException {
+
         password = "SHA1:" + DigestUtils.shaHex(password);
         
         try {
-            UserDto userDto = (UserDto)em.createNamedQuery("validate_credentials")
-                    .setParameter("username", username)
-                    .setParameter("password", password).getSingleResult();
+            UserDto userDto = userDAO.validate_credentials(username, password);
             logger.info("Got user:" + userDto.getEmail());
             return userDto;
-        } catch (NoResultException ex) {
+        } catch (PersistenceException ex) {
             throw(new InvalidCredentialsException());
         }
 

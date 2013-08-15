@@ -56,6 +56,7 @@ public class User implements Serializable {
         this.status        = UserStatus.NEW;
         this.creation_time = new Date();
         this.administrator = false;
+
     }
 
     public String getEmail() {
