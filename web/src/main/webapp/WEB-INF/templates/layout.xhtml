@@ -60,7 +60,9 @@
                 <!-- user logged in -->
                 <c:choose>
                     <c:when test="#{not empty login.activeUser}">
-                        <p><h:outputText value="#{login.activeUser.first_name} #{login.activeUser.last_name}"/></p>
+                        <h:form id="form-logout">
+                            <p><h:outputText value="#{login.activeUser.first_name} #{login.activeUser.last_name}"/> (<h:commandLink action="#{login.logout()}" value="#{msg.logout}"/>)</p>
+                        </h:form>
                     </c:when>
                 </c:choose>
 

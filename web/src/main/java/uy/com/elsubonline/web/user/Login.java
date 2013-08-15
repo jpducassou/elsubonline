@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import uy.com.elsubonline.api.IUserService;
 import uy.com.elsubonline.api.dtos.UserDto;
@@ -66,7 +67,11 @@ public class Login {
     }
 
     public String logout() {
-        return null;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession)facesContext.getExternalContext().getSession(false);
+        session.invalidate();
+        this.activeUser = null;
+        return "/index.xhtml";
     }
 
     public UserDto getActiveUser() {
