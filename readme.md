@@ -5,6 +5,7 @@ Description
 -----------------------------
 JAVA EE auction web application.
 The source of this application is available on:
+
 * [bitbucket](https://bitbucket.org/jpducassou/elsubonline)
 * [github](https://github.com/jpducassou/elsubonline)
 
@@ -28,7 +29,7 @@ Alternatively you can put the generated ear file onto whichever folder you are s
 
 For more information visit [maven web site](http://maven.apache.org/).
 
-Notes:
+**Notes:**
 Jboss must be started with JMS support (i.e. -Djboss.server.default.config=standalone-full.xml)
 Also there is a directory called "deployments" with all you need to deploy this application:
 
