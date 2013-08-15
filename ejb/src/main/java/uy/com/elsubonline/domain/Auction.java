@@ -35,11 +35,14 @@ public class Auction implements Serializable {
     @ManyToOne
     private Category category;
 
+    @ManyToOne
+    private User owner;
+
     public Auction() {
         // Empty constructor
     }
 
-    public Auction(String title, String short_description, String long_description, double base_price, Date closing_time, Category category) {
+    public Auction(String title, String short_description, String long_description, double base_price, Date closing_time, Category category, User owner) {
 
         // Basic attibutes
         this.title             = title;
@@ -48,6 +51,7 @@ public class Auction implements Serializable {
         this.base_price        = base_price;
         this.closing_time      = closing_time;
         this.category          = category;
+        this.owner             = owner;
 
         // Calculated attributes
         this.creation_time = new Date();
@@ -113,6 +117,14 @@ public class Auction implements Serializable {
     @Override
     public String toString() {
         return "uy.com.elsubonline.domain.Auction[ id=" + getId() + " ]";
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
 }

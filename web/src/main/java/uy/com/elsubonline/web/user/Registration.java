@@ -95,6 +95,7 @@ public class Registration implements Serializable {
      */
     public String register() {
         logger.info("Trying to register: " + email);
+
         FacesMessage msg;
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");

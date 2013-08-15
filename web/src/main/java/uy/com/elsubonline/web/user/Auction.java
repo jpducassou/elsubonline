@@ -35,8 +35,11 @@ public class Auction {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
 
+        Login sessionBean = (Login)FacesContext.getCurrentInstance().getApplication().evaluateExpressionGet(facesContext, "#{login}", Login.class);
+        String current_user = sessionBean.getActiveUser().getEmail();
+
         try {
-            auctionService.create(title, short_description, long_description, base_price, closing_time, category);
+            auctionService.create(current_user, title, short_description, long_description, base_price, closing_time, category);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_auction_created"), title);
         } catch (ServiceException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_auction_aborted"), title);

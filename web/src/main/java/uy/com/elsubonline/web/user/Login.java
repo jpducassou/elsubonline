@@ -45,6 +45,7 @@ public class Login {
 
     public String login() {
         logger.info("Trying to login: " + username);
+
         FacesMessage msg;
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
