@@ -36,6 +36,7 @@ Also there is a directory called "deployments" with all you need to deploy this 
 * The MySQL jdbc driver.
 * A datasource configuration file (elsubonline-ds.xml).
 * A message queue configuration file (elsubonline-hornetq-jms.xml).
+* The whole jboss config file **standalone-full.xml** (mainly for completeness).
 * A MySQL dump sample with some data as example. This includes an administrator user whose credentials are:
 	* username: elsub.uy@gmail.com
 	* password: 1234
