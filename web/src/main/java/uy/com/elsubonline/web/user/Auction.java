@@ -1,5 +1,6 @@
 package uy.com.elsubonline.web.user;
 
+import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -20,6 +21,7 @@ public class Auction {
     private String short_description;
     private String long_description;
     private double base_price;
+    private Date   closing_time;
 
     @EJB
     private IAuctionService auctionService;
@@ -32,7 +34,7 @@ public class Auction {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
         try {
-            auctionService.create(title, short_description, long_description, base_price);
+            auctionService.create(title, short_description, long_description, base_price, closing_time);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_auction_created"), title);
         } catch (ServiceException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_auction_aborted"), title);
@@ -72,6 +74,14 @@ public class Auction {
 
     public void setBase_price(double base_price) {
         this.base_price = base_price;
+    }
+
+    public Date getClosing_time() {
+        return closing_time;
+    }
+
+    public void setClosing_time(Date closing_time) {
+        this.closing_time = closing_time;
     }
 
 }

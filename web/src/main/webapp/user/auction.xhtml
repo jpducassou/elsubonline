@@ -31,8 +31,14 @@
 
               <p>
                 <h:outputLabel for="base_price" value="#{msg.base_price}:"/>
-                <h:inputText id="base_price" value="#{auction.base_price}" required="true" size="4"/>
+                <h:inputText id="base_price" value="#{auction.base_price}" required="true" size="10"/>
                 <h:message for="base_price" />
+              </p>
+
+              <p>
+                <h:outputLabel for="closing_time" value="#{msg.closing_time}:"/>
+                <p:calendar value="#{auction.closing_time}" mode="inline" id="closing_time"/>
+                <h:message for="closing_time" />
               </p>
 
               <p>

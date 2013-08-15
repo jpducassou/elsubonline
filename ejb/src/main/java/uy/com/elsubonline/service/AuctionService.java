@@ -1,5 +1,6 @@
 package uy.com.elsubonline.service;
 
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.apache.log4j.Logger;
@@ -17,9 +18,9 @@ public @Stateless class AuctionService implements IAuctionService {
     private IAuctionDAO auctionDAO;
 
     @Override
-    public void create(String title, String short_description, String long_description, double base_price) throws ServiceException {
+    public void create(String title, String short_description, String long_description, double base_price, Date closing_time) throws ServiceException {
         logger.info("AuctionService.create " + title);
-        Auction auction = new Auction(title, short_description, long_description, base_price);
+        Auction auction = new Auction(title, short_description, long_description, base_price, closing_time);
         try {
             auctionDAO.create(auction);
         } catch (PersistenceException ex) {

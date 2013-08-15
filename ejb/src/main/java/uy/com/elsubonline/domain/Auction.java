@@ -35,17 +35,17 @@ public class Auction implements Serializable {
         // Empty constructor
     }
 
-    public Auction(String title, String short_description, String long_description, double base_price) {
+    public Auction(String title, String short_description, String long_description, double base_price, Date closing_time) {
 
         // Basic attibutes
-        this.title = title;
+        this.title             = title;
         this.short_description = short_description;
         this.long_description  = long_description;
-        this.base_price = base_price;
+        this.base_price        = base_price;
+        this.closing_time      = closing_time;
 
         // Calculated attributes
         this.creation_time = new Date();
-        this.closing_time  = new Date();
 
     }
 
