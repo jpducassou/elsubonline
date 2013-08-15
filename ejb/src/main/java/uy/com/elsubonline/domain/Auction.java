@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,11 +32,14 @@ public class Auction implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date closing_time;
 
+    @ManyToOne
+    private Category category;
+
     public Auction() {
         // Empty constructor
     }
 
-    public Auction(String title, String short_description, String long_description, double base_price, Date closing_time) {
+    public Auction(String title, String short_description, String long_description, double base_price, Date closing_time, Category category) {
 
         // Basic attibutes
         this.title             = title;
@@ -43,6 +47,7 @@ public class Auction implements Serializable {
         this.long_description  = long_description;
         this.base_price        = base_price;
         this.closing_time      = closing_time;
+        this.category          = category;
 
         // Calculated attributes
         this.creation_time = new Date();

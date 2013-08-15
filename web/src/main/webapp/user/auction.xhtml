@@ -4,7 +4,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
     <ui:composition template="/WEB-INF/templates/layout.xhtml">
@@ -13,7 +14,7 @@
               <p:growl id="messages" showDetail="true" life="3000" />
               <p>
                 <h:outputLabel for="title" value="#{msg.title}:"/>
-                <h:inputText id="titile" value="#{auction.title}" required="true"/>
+                <h:inputText id="title" value="#{auction.title}" required="true"/>
                 <h:message for="title" />
               </p>
 
@@ -27,6 +28,14 @@
                 <h:outputLabel for="long_description" value="#{msg.long_description}:"/>
                 <p:editor id="long_description" value="#{auction.long_description}" width="600" required="true" />
                 <h:message for="long_description" />
+              </p>
+
+              <p>
+                <h:outputLabel for="category" value="#{msg.category}:"/>
+                <h:selectOneMenu value="#{auction.category}" id="category">
+                     <f:selectItems value="#{category.list}" var="cat" itemLabel="#{cat}" itemValue="#{cat}" />
+                </h:selectOneMenu>
+                <h:message for="category" />
               </p>
 
               <p>

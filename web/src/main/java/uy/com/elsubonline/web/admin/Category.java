@@ -2,6 +2,7 @@ package uy.com.elsubonline.web.admin;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -10,6 +11,7 @@ import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 import org.primefaces.event.RowEditEvent;
 import uy.com.elsubonline.api.ICategoryService;
+import uy.com.elsubonline.api.exceptions.ServiceException;
 
 @ManagedBean
 @RequestScoped
@@ -22,16 +24,10 @@ public class Category implements Serializable {
     @EJB
     private ICategoryService service;
 
-    /**
-     * @return the category_name
-     */
     public String getCategory_name() {
         return category_name;
     }
 
-    /**
-     * @param category_name the category_name to set
-     */
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
     }
@@ -41,11 +37,23 @@ public class Category implements Serializable {
     }
 
     public void onEdit(RowEditEvent event) {
+
         String old_category_name = (String)event.getObject();
+
         logger.info("Updating " + old_category_name + " to " + category_name);
-        service.update(old_category_name, category_name);
-        FacesMessage msg = new FacesMessage("Category edited", (String)event.getObject());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+        FacesMessage msg;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+
+        try {
+            service.update(old_category_name, category_name);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_category_updated"), category_name);
+        } catch (ServiceException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_category_aborted"), category_name);
+        }
+
+        facesContext.addMessage(null, msg);
     }
 
     public void onCancel(RowEditEvent event) {
@@ -53,9 +61,22 @@ public class Category implements Serializable {
 
 
     public String create() {
+
         logger.info("Trying to create category: " + category_name);
-        service.create(category_name);
-        return "home";
+
+        FacesMessage msg;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+
+        try {
+            service.create(category_name);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_category_created"), category_name);
+        } catch (ServiceException ex) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_category_aborted"), category_name);
+        }
+
+        facesContext.addMessage(null, msg);
+        return "/index.xhtml";
     }
 
 }

@@ -22,6 +22,7 @@ public class Auction {
     private String long_description;
     private double base_price;
     private Date   closing_time;
+    private String category;
 
     @EJB
     private IAuctionService auctionService;
@@ -33,8 +34,9 @@ public class Auction {
         FacesMessage msg;
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+
         try {
-            auctionService.create(title, short_description, long_description, base_price, closing_time);
+            auctionService.create(title, short_description, long_description, base_price, closing_time, category);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("msg_auction_created"), title);
         } catch (ServiceException ex) {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, bundle.getString("err_auction_aborted"), title);
@@ -82,6 +84,14 @@ public class Auction {
 
     public void setClosing_time(Date closing_time) {
         this.closing_time = closing_time;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }
